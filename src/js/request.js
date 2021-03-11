@@ -8,7 +8,6 @@ function getApiData() {
           return response.json();  //retourne une promesse en json
       }) 
       .then(function (data) {  
-          console.log(data);  // Data affichées dans la console 
       })
       .catch(function (err) {
           console.log('Nous rencontrons un probléme avec le serveur');
