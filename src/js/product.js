@@ -12,64 +12,104 @@ const id = getId (); */
 function getId () {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams (queryString);
-    const product = urlParams.get ('id')
+    const product = urlParams.get ('id');
     return product;
 }
-console.log (getId());
 const id = getId ();
 
 
 //~~~~~~~~~~~~~~~~~~~~ display product ~~~~~~~~~~~~~~~~~~~~//
 
 function displayProduct (data) {
-    const productCard = document.getElementById('product-card');
-    for (var i = 0; i < data.length; i++) {
+    const productCard = document.querySelector('#product-card');
 
-        // items creation  
-        let header = document.createElement('header');  
-        let title = document.createElement('h2'); 
-        let carContainer = document.createElement('div');
-        let image = document.createElement('img');
-        let description = document.createElement('p');
-        let lenses = document.createElement('select');
-        let option = document.createElement('option');
-        let price = document.createElement('p');
-        let button = document.createElement('button');
-        let _id = [];
+    // items creation  
+    let header = document.createElement('header');  
+    let title = document.createElement('h2'); 
+    let carContainer = document.createElement('div');
+    let image = document.createElement('img');
+    let description = document.createElement('p');
+    let lensesElt = document.createElement('select');
+    let optionPlaceholder = document.createElement('option');
+    let price = document.createElement('p');
+    let button = document.createElement('button');
+    let _id = [];
 
-        // Class creation
-        header.setAttribute ('class','w3-container w3-light-grey');
-        carContainer.setAttribute ('class','w3-container');
+    // Class creation
+    header.setAttribute ('class','w3-container w3-light-grey');
 
-        image.setAttribute ('class','w3-left w3-margin-right');
-        image.setAttribute ('style','width:100%');
+    carContainer.setAttribute ('class','w3-container');
 
-        lenses.setAttribute ('id','select-option');
-        lenses.setAttribute ('class','w3-select w3-border');
+    image.setAttribute ('class','w3-left w3-margin-right');
+    image.setAttribute ('style','width:100%');
 
-        button.setAttribute ('id','button-add-basket');
-        button.setAttribute ('class','w3-button w3-block w3-dark-grey');
+    lensesElt.setAttribute ('id','select-option');
+    lensesElt.setAttribute ('class','w3-select w3-border');
 
-        // Inner.html 
-        _id = data[i]._id
-        title.innerHTML = data[i].name;
-        image.src = data[i].imageUrl;
-        description.innerHTML = data[i].description;
-        option.innerHTML = "Choisissez votre objectif";
-        price.innerHTML = data[i].price + ' €';
+    button.setAttribute ('id','button-add-basket');
+    button.setAttribute ('class','w3-button w3-block w3-dark-grey');
 
-        // Order
-        productCard.append(header,carContainer,button);
-        header.appendChild(title);
-        carContainer.append(image,description,lenses,price);
-        lenses.appendChild(option);
+    // Inner.html 
+    _id = data._id
+    title.innerHTML = data.name;
+    image.src = data.imageUrl;
+    description.innerHTML = data.description;
+    optionPlaceholder.innerHTML = "Choisissez votre objectif";
+    price.innerHTML = data.price / 100 + ' €';
+    button.innerHTML = "Ajouter au panier"
+
+    // Order
+    productCard.append(header,carContainer,button);
+    header.appendChild(title);
+    carContainer.append(image,description,lensesElt,price);
+    lensesElt.appendChild(optionPlaceholder);
+
+    // Récuperer les choix des options de chaque apparails à partir de l'api 
+        // Selection des options dans l'api
+        let choiceOption = data.lenses;
+        // Selectionner le nombre d'option en fonction de l'appareil et les affichés 
+    for (let i = 0; i < choiceOption.length; i++) {
+        const option = document.createElement ("option");
+        option.setAttribute('value',data.lenses[i]);
+        option.innerHTML= data.lenses[i];
+        lensesElt.appendChild(option);
     }
-}
 
+    // Récuration lenses options
+    const lensesOption = document.getElementById('select-option');
+    console.log(lensesOption)
+
+    //~~~~~~~~~~~~~~~~~~~~ Bouton ajouter au panier ~~~~~~~~~~~~~~~~~~~~//
+
+    // Selection du bouton pour envoyer au panier 
+    const btn = document.getElementById("button-add-basket");
+    console.log(btn);
+
+    // envoyer au panier
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+    
+        // Le choix de l'utilisateur  
+        const choiceOption = lensesOption.value;
+    
+        // récupération des informations 
+        let productInformation = {
+            nomProduit: data.name,
+            idProduit: id,
+            choiceOption: choiceOption,
+            quantity: 1,
+            prix: data.price / 100,
+        };
+    
+    console.log(productInformation); 
+    
+    });
+
+}
 //~~~~~~~~~~~~~~~~~~~~ fetch product ~~~~~~~~~~~~~~~~~~~~//
 
 // Fetch fonction with the selected Id  
-fetch ('http://localhost:3000/api/cameras/' + id ) 
+fetch (url + '/' + id ) 
 
     .then (function (response) {  
         return response.json();
@@ -82,7 +122,11 @@ fetch ('http://localhost:3000/api/cameras/' + id )
 
     .catch (function (error) {
         console.log('Nous rencontrons un probléme avec le serveur');
-    })
+    });
 
-// find Id selected product 
+
+
+//~~~~~~~~~~~~~~~~~~~~ gestion du panier ~~~~~~~~~~~~~~~~~~~~//
+
+
 

@@ -3,7 +3,7 @@
 function displayItems (data) {
 
     const indexCard = document.getElementById('index-card');
-    for (var i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
 
         // items creation        
         let linkElement = document.createElement('a');
@@ -21,7 +21,7 @@ function displayItems (data) {
         linkElement.setAttribute('href','src/views/product.html?id=' + data[i]._id);  //add destination
 
         // Class creation
-        cardContainer.className = 'card-container';
+        cardContainer.className = 'card-container'; 
         cardContainer.setAttribute ('class', 'w3-third');  //add w3css class
 
         cardElement.className = 'card-element';
@@ -39,7 +39,7 @@ function displayItems (data) {
         image.src = data[i].imageUrl;
         description.innerHTML = data[i].description;
         lenses.innerHTML = data[i].lenses;
-        price.innerHTML = data[i].price + ' €';
+        price.innerHTML = data[i].price / 100 + ' €';
 
         // Order
         indexCard.appendChild(cardContainer);
