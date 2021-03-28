@@ -11,4 +11,3 @@ fetch (url)
         console.log('Nous rencontrons un probléme avec le serveur');
     })
 
-//création de nouveaux élément pour les cards

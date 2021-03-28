@@ -22,17 +22,37 @@ li {
     list-style: none;
 }
 
-/* header */
+/* start - index page */
+
+nav {
+    margin-bottom: 20px;
+}
+
 nav img {
-    width: 130px;
+    width: 120px;
     height: 100%;
     margin: auto;
 }
 
 nav .items {
-    margin:  18px;
+    margin:  12px;
 }
 
 img {
     width: 100%;
 }
+
+/* start - index page */
+
+
+/* start - basket page */
+
+form {
+    max-width : 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* end - basket page */

@@ -20,8 +20,8 @@
                 <a href="/index.html" class="w3-bar-item w3-button">
                 <img src="/public/img/logo_orinoco.png" alt="Logo Oricono">
             </a>
-                <a href="product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
-                <a href="basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
+                <a href="/src/views/product/product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
+                <a href="/src/views/basket/basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
             </div>
         </nav>
     </header>
@@ -30,39 +30,38 @@
     <main>
 
         <!-- section -->
-        <!-- <section class="w3-display-middle">
+        <section class="w3-display-middle">
             <div class="w3-container w3-center">
                 <h1>Détails produit</h1><br>
               
                 <div class="w3-card-4" style="width:100%">
                   <header class="w3-container w3-light-grey">
-                    <h2>Title</h2>
+                    <h2 id='title'></h2>
                   </header>
                   <div class="w3-container">
-                    <img src="/public/img/vcam_1.jpg" alt="appareil photo" class="w3-left w3-margin-right" style="width:100%">
-                    <p>desciption</p>
+                    <img id='image' class="w3-left w3-margin-right" style="width:100%">
+                    <p id='description'>desciption</p>
                     <hr>
                     <select id="select-option" class="w3-select w3-border" name="option">
                         <option value="" disabled selected>Choisissez votre objectif</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <!-- <option class="option" value = ""></option>
+                        <option class="option" value = ""></option> -->
                     </select>
                     <hr>
-                    <p>price</p><br>
+                    <p id='price'>price</p><br>
                   </div>
                   <button id="button-add-basket" class="w3-button w3-block w3-dark-grey">Ajouter au panier</button>
                 </div>
               </div>
-        </section> -->
+        </section>
 
-        <section class="w3-display-middle">
+        <!-- <section class="w3-display-middle">
             <div class="w3-container w3-center">
                 <h1>Détails produit</h1><br>
               
                 <div id="product-card" class="w3-card-4" style="width:100%"></div>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <!-- footer -->
@@ -75,8 +74,11 @@
     </footer>
 
     <!-- script -->
-    <script type="text/javascript" src="/src/js/request.js" defer></script>    
-    <script type="text/javascript" src="/src/js/functions.js" defer></script>    
-    <script type="text/javascript" src="/src/js/product.js" defer></script>    
+    <script src="../../js/request.js"></script>    
+    <script src="../../js/Item.js"></script> 
+    <script src="../../js/itemLenses.js"></script> 
+    <script src="../../js/itemAddButtton.js"></script> 
+    <script src="../../js/main.js"></script>    
+    <script src="/src/views/product/product.js"></script>    
 </body>
 </html>
