@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- link -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+
+    <title>Oricono - Votre panier</title>
+</head>
+<body>
+
+    <!-- header -->
+    <header>
+        <nav>
+            <div class="w3-top w3-bar w3-black">
+                <a href="/index.html" class="w3-bar-item w3-button">
+                <img src="/public/img/logo_orinoco.png" alt="Logo Oricono">
+            </a>
+                <a href="/src/views/product/product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
+                <a href="/src/views/basket/basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- main -->
+    <main>
+
+      <!-- banner -->
+      <banner>
+          <div class="w3-content">
+              <div class="w3-padding-top-48">
+                  <div class="w3-display-container">
+                      <div class="w3-display-bottomleft w3-padding w3-small">
+                        <h1>Orinoco - panier</h1>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </banner>
+
+      <!-- section -->
+      <section>
+          <div class="w3-container">
+              <h1 class="w3-center">Détails de votre panier</h1>
+              <table class="w3-table-all"></table>
+
+          
+              <div id="table"></div>
+              <div id='empty-basket' class="w3-center"></div>
+              <div class="w3-container w3-center">
+                <div class="w3-container w3-right-align w3-margin-righ">
+                  <span class="prix-total"></span>
+                </div>
+                <button class="clearTheBasket w3-button w3-round-large w3-light-blue">Vider le panier</button>
+              </div>
+              <!-- <div class="w3-right-align">
+                <span> Prix total </span>
+              </div> -->
+
+            <form class="w3-card-4 w3-padding">
+              <h2 class="w3-text-blue">Formulaire</h2>
+              <p>      
+              <label class="w3-text-black"><b>Nom</b></label>
+              <input class="w3-input w3-border" id="lastname" name="lastname" placeholder="Nom" type="text" required></p>
+              <p>      
+              <label class="w3-text-black"><b>Prénom</b></label>
+              <input class="w3-input w3-border" id="firstname" name="firstname" placeholder="Prénom" type="text" required></p>
+              <p>      
+              <label class="w3-text-black"><b>Adress mail</b></label>
+              <input class="w3-input w3-border" id="email" name="email" placeholder="Mail@example.com" type="email" required></p>
+              <p>      
+              <label class="w3-text-black"><b>adresse</b></label>
+              <input class="w3-input w3-border" id="adress" name="adress" placeholder="Adresse" type="text" required></p>
+              <p>      
+              <label class="w3-text-black"><b>ville</b></label>
+              <input class="w3-input w3-border" id="city" name="city" placeholder="Ville" type="text" required></p>
+              <p>      
+              <div class="w3-center">
+              <input type="submit" id="submit" value="Passez votre commande" class="w3-btn w3-light-blue w3-padding w3-margin w3-round-large">
+            </form>
+
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="w3-center w3-black">
+      <a href="#" class="w3-button w3-large">Mentions légales</a>
+      <a href="#" class="w3-button w3-large">Informations</a>
+      <a href="#" class="w3-button w3-large">Contactez-nous</a>
+    </footer>
+
+    <!-- script -->
+    <script type="text/javascript" src="/src/views/Basket/basket.js"></script>    
+
+</body>
+</html>
