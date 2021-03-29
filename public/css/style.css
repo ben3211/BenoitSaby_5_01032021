@@ -54,5 +54,8 @@ form {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+form p {
+    margin-top: 15px;
+}
 
 /* end - basket page */

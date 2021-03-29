@@ -76,7 +76,6 @@ else {  // S'il n'est pas vide -> afficher produit
 
 // Selection des boutons
 let btnRemoveArticle = document.querySelectorAll('.btn-remove-article');
-console.log(btnRemoveArticle)
 
 for (let i = 0; i < btnRemoveArticle.length; i++) {
     btnRemoveArticle[i].addEventListener('click', (e) => {
@@ -167,47 +166,41 @@ class infoForm {
 
 // Selection du bouton submit + le event listener 
 document.querySelector('#submit').addEventListener('click', (e) => {
+    e.preventDefault();
 
-    // api validation
+    /* // api validation
     var valid = true;
     for (let input of document.querySelectorAll('form input')) {
        valid = valid && input.reportValidity ();
        if (!valid) {
-           break;      // Evite de testé les inputs suivant, si un n'est pas valide
+           break;                                                      // Evite de testé les inputs suivant, si un n'est pas valide
        }
     }
     if (valid) {
         alert ("votre commande à bien été envpyé");
+    } */
+
+    // Récupération infos du formulaire
+    const formInfo = {
+        lastname: document.querySelector("#lastname").value,
+        firstname: document.querySelector("#firstname").value,
+        email: document.querySelector("#email").value,
+        adress: document.querySelector("#adress").value,
+        city: document.querySelector("#city").value
     }
 
+    // Mettre les forInfo dans le localStorage
+    localStorage.setItem ("form", JSON.stringify(formInfo));
 
+    // Object produit + info formulaire 
+    const productAndFormObject = {
+        localStorageProduct,
+        formInfo
+    }
+    console.log(productAndFormObject); 
 
-    // Récupération des inputs
-    localStorage.setItem ("lastname", document.querySelector("#lastname").value);
-    localStorage.setItem ("firstname", document.querySelector("#firstname").value);
-    localStorage.setItem ("email", document.querySelector("#email").value);
-    localStorage.setItem ("adress", document.querySelector("#adress").value);
-    localStorage.setItem ("city", document.querySelector("#city").value);
 });
 
-
-
-// Récuperer 
-
-
-/* // La fonction 
-submitFormButton.addEventListener('click', (e) => {
-    e.preventDefault ();
-
-    // Récupération des input
-    localStorage.setItem ("lastname", document.querySelector("#lastname").value);
-    localStorage.setItem ("firstname", document.querySelector("#firstname").value);
-    localStorage.setItem ("email", document.querySelector("#email").value);
-    localStorage.setItem ("adress", document.querySelector("#adress").value);
-    localStorage.setItem ("city", document.querySelector("#city").value);
-
-    console.log( document.querySelector("#lastname").value)
-}) */
 
 //~~~~~~~~~~~~~~~~~~~~ END - Formullaire ~~~~~~~~~~~~~~~~~~~~//
 
