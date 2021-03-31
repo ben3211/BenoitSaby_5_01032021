@@ -62,26 +62,27 @@
                 <span> Prix total </span>
               </div> -->
 
-            <form class="w3-card-4 w3-padding">
+            <form class="w3-card-4 w3-padding" id="form" method="" action="">
+              <p id="error" class="w3-center w3-text-red"></p>
               <h2 class="w3-text-blue">Formulaire</h2>
               <p>      
-              <label class="w3-text-black fa fa-user" for="Votre Nom"><b> Nom</b></label>
-              <input class="w3-input w3-border" id="lastname" name="lastname" placeholder="Nom" type="text" required></p>
+              <label class="w3-text-black fa fa-user" for="Votre Nom"><b> Nom</b></label> 
+              <input class="w3-input w3-border" name="lastname" id="lastname" placeholder="Nom" type="text" required></p>
               <p>      
               <label class="w3-text-black fa fa-user" for="Votre Prénom"><b> Prénom</b></label>
-              <input class="w3-input w3-border" id="firstname" name="firstname" placeholder="Prénom" type="text" required></p>
+              <input class="w3-input w3-border" name="firstname" id="firstname" placeholder="Prénom" type="text" required></p>
               <p>      
-              <label class="w3-text-black fa fa-envelope" for="email"><b> Adress mail</b></label>
-              <input class="w3-input w3-border" id="email" name="email" placeholder="Mail@example.com" type="email" required></p>
+              <label class="w3-text-black fa fa-envelope" for="email"><b> Adress mail</b></label> 
+              <input class="w3-input w3-border" name="email" id="email" placeholder="Mail@example.com" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></p>
               <p>      
-              <label class="w3-text-black fa fa-address-card-o" for="adr"><b> adresse</b></label>
-              <input class="w3-input w3-border" id="adress" name="adress" placeholder="Adresse" type="text" required></p>
+              <label class="w3-text-black fa fa-address-card-o" for="adress"><b> Adresse</b></label> 
+              <input class="w3-input w3-border" name="adress" id="adress" placeholder="Adresse" type="text" required></p>
               <p>      
-              <label class="w3-text-black fa fa-institution" for="city"></label><b> ville</b></label>
-              <input class="w3-input w3-border" id="city" name="city" placeholder="Ville" type="text" required></p>
+              <label class="w3-text-black fa fa-institution" for="city"><b> Ville</b></label> 
+              <input class="w3-input w3-border" name="city" id="city" placeholder="Ville" type="text" required></p>
               <p>      
               <div class="w3-center">
-              <input type="submit" id="submit" value="Passez votre commande" class="w3-btn w3-light-blue w3-padding w3-margin w3-round-large">
+              <input type="submit" name="submit" id="submit" value="Passez votre commande" class="w3-btn w3-light-blue w3-padding w3-margin w3-round-large">
             </form>
 
       </section>
@@ -96,6 +97,7 @@
 
     <!-- script -->
     <script type="text/javascript" src="/src/views/Basket/basket.js"></script>    
+    <script type="text/javascript" src="../../js/request.js"></script>    
 
 </body>
 </html>

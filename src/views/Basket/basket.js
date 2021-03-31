@@ -154,74 +154,96 @@ function priceTotalBasket () {
 
 // Formulaire 
 class infoForm {
-    constructor (lastname, firstname, email, adress, city) {
-        this.lastName = lastname;
-        this.firstname = firstname;
-        this.email = email;
-        this.adress = adress;
-        this.city = city;
+    constructor () {
+        this.lastname = document.querySelector ("#lastname").value;
+        this.firstname = document.querySelector ("#firstname").value;
+        this.email = document.querySelector ("#email").value;
+        this.adress = document.querySelector ("#adress").value;
+        this.city = document.querySelector ("#city").value;
     }
-}
 
+    /* regExEmail = (value) => {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test (value);
+    }
+
+    emailControl () {
+        let email = this.email;
+        if(regExEmail(email)) {
+            return true;
+        }
+        else {
+            alert ("email non valide")
+            return false;
+        }
+    } */
+};
+
+/* regExEmail = (value) => {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test (value);
+    }
+
+function emailControl () {
+    let email = this.email;
+    if(regExEmail(email)) {
+        return true;
+    }
+    else {
+        alert ("email non valide")
+        return false;
+    }
+} */
 
 // Selection du bouton submit + le event listener 
-document.querySelector('#submit').addEventListener('click', (e) => {
-    e.preventDefault();
+document.getElementById('submit').addEventListener('click', (e) => {
+    /* e.preventDefault(); */
 
-    /* // api validation
-    var valid = true;
-    for (let input of document.querySelectorAll('form input')) {
-       valid = valid && input.reportValidity ();
-       if (!valid) {
-           break;                                                      // Evite de testé les inputs suivant, si un n'est pas valide
-       }
+    let formInfo = new infoForm
+
+    // Api validation
+    let valid = true;
+    
+    for (let input of document.querySelectorAll('input[type="text"], input[type="email"]')) {
+
+        valid = valid && input.reportValidity ();
+        if (!valid) {
+            break;                                                     
+        }
     }
     if (valid) {
-        alert ("votre commande à bien été envpyé");
-    } */
-
-    // Récupération infos du formulaire
-    const formInfo = {
-        lastname: document.querySelector("#lastname").value,
-        firstname: document.querySelector("#firstname").value,
-        email: document.querySelector("#email").value,
-        adress: document.querySelector("#adress").value,
-        city: document.querySelector("#city").value
+        // Mettre les formInfo dans le localStorage
+        alert ("votre commande à bien été envoyé");
+        localStorage.setItem ("form", JSON.stringify(formInfo));
     }
-
-    // Mettre les forInfo dans le localStorage
-    localStorage.setItem ("form", JSON.stringify(formInfo));
-
-    // Object produit + info formulaire 
-    const productAndFormObject = {
-        localStorageProduct,
-        formInfo
-    }
-    console.log(productAndFormObject); 
-
 });
-
 
 //~~~~~~~~~~~~~~~~~~~~ END - Formullaire ~~~~~~~~~~~~~~~~~~~~//
 
 
 
 
+//~~~~~~~~~~~~~~~~~~~~ START - Garder les données du formulaire aprés un reload ~~~~~~~~~~~~~~~~~~~~//
+
+/* // Prendre les informations du locale storage 'form'
+const formLocalStorageData = localStorage.getItem ('form');
+const formLocalStorageDataObject = JSON.parse (formLocalStorageData);
+
+console.log (formLocalStorageDataObject)
+
+// la fonction 
+function putLocalStorageDataInTheForm (input) {
+    document.querySelector(`#${input}`).value = formLocalStorageDataObject[input];
+};
+
+putLocalStorageDataInTheForm ('lastname');
+putLocalStorageDataInTheForm ('firstname');
+putLocalStorageDataInTheForm ('email');
+putLocalStorageDataInTheForm ('adress');
+putLocalStorageDataInTheForm ('city'); */
 
 
+//~~~~~~~~~~~~~~~~~~~~ END - Garder les données du formulaire aprés un reload ~~~~~~~~~~~~~~~~~~~~//
 
-//~~~~~~~~~~~~~~~~~~~~ Idées.... Tableau.... ~~~~~~~~~~~~~~~~~~~~//
-// Initialisation
-/* function initBasket() {
-    let basket = localStorage.getItem('basket'); 
-    if (basket != null) {
-        return JSON.parse(basket); // JSON to JS
-    }
-    else {
-        return [];
-    }
 
-}
 
 
 //~~~~~~~~~~~~~~~~~~~~ POST request ~~~~~~~~~~~~~~~~~~~~// 
@@ -251,3 +273,17 @@ class orderInfo {
     }
 }  */
 
+
+
+/* postApiRequest (url + '/' + order, variable) // Variable doit représenter les informations du formulaire ainsi que le numéro de commande
+    .then (function (response) {
+        localStorage.setItem ("localStorageProduct", JSON.stringify([]));
+        localStorage.setItem ("orderConfirmation", response.orderId); 
+        window.location.href = "confirm.html"; 
+    })
+    .catch (function (error) {
+        console.log (error);
+        if (error === 0) {
+            alert ("Nous rencontrons un probléme avec le serveur");
+        }
+    }); */
