@@ -7,7 +7,8 @@
     
     <!-- link -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link rel="icon" href="../../../public/img/logo_orinoco.png" type="image/png" sizes="32x32">
 
     <title>Oricono - confirmation commande</title>
 </head>
@@ -17,11 +18,11 @@
     <header>
         <nav>
             <div class="w3-top w3-bar w3-black">
-                <a href="index.html" class="w3-bar-item w3-button">
-                <img src="images/logo_orinoco.png" alt="Logo Oricono">
-            </a>
-                <a href="src/views/product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
-                <a href="src/views/basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
+                <a href="/index.html" class="w3-bar-item w3-button">
+                <img src="/public/img/logo_orinoco.png" alt="Logo Oricono">
+                </a>
+                <a href="/src/views/product/product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
+                <a href="/src/views/basket/basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
             </div>
         </nav>
     </header>
@@ -43,9 +44,8 @@
         </banner>
 
         <!-- section -->
-        <section>
-            <h2 class="w3-center">Confirmation commande</h2>
-
+        <section class="w3-container w3-center">
+            <h2 class="w3-center">Confirmation de votre commande</h2>
 
         </section>
     </main>
@@ -60,7 +60,9 @@
     </footer>
 
     <!-- script -->
-    <script type="text/javascript" src="src/js/confirm.js"></script>    
+    <script src="/src/views/confirm/confirm.js"></script>    
+    <script type="text/javascript" src="../../js/request.js"></script>    
+    <script type="text/javascript" src="../Basket/basket.js"></script>    
 
 </body>
 </html>

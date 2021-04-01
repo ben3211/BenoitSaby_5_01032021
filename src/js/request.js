@@ -18,7 +18,7 @@ function getApiData() {
 
 
 /////////////// Envoyer les données à l'API //////////////////
-function postApiRequest (url, jsonBody) {
+/* function postApiRequest (url, jsonBody) {
   const promise = new Promise (function (resolve, reject) {
     const request = new XMLHttpRequest();
     request.open ("POST", url);
@@ -33,4 +33,4 @@ function postApiRequest (url, jsonBody) {
       request.send (JSON.stringify(jsonBody));
   });
   return promise;
-}
+} */

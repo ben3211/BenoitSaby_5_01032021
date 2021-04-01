@@ -24,8 +24,7 @@ function yourBasketIsEmpty() {
 // Récupération des valeurs 
 
 // Variable key/value du local storage
-let localStorageProduct = JSON.parse (localStorage.getItem("basket"));  // Convertir les données JSON du localStorage en JS 
-console.log(localStorageProduct)
+const localStorageProduct = JSON.parse (localStorage.getItem("basket"));  // Convertir les données JSON du localStorage en JS 
 
 
 //~~~~~~~~~~~~~~~~~~~~ Affichage des produits dans le paniers ~~~~~~~~~~~~~~~~~~~~//
@@ -43,7 +42,7 @@ else {  // S'il n'est pas vide -> afficher produit
 
 
     for ( i = 0; i < localStorageProduct.length; i++ ) {
-        console.log (localStorageProduct.length)
+        /* console.log (localStorageProduct.length) */
 
         structurePanierProduct += ` <hr>
                                         <div class="w3-row w3-center">
@@ -82,11 +81,9 @@ for (let i = 0; i < btnRemoveArticle.length; i++) {
 
         // Selection ID
         let idRemoveProduct = localStorageProduct[i].idProduit;
-        console.log(idRemoveProduct)
 
         // Suppression de l'élément cjiqué
         localStorageProduct = localStorageProduct.filter (element => element.idProduit !== idRemoveProduct)
-        console.log (localStorageProduct)
 
         // Mise a jour localStorage
         localStorage.setItem ('basket', JSON.stringify(localStorageProduct));
@@ -131,13 +128,11 @@ function priceTotalBasket () {
 
         // Mettre les prix dans le tableau => 'priceTotal'
         priceTotal.push(priceProdutInTheBasket);
-        console.log (priceTotal)
     }
 
     // Additionner les prix  
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     const prixTotal = priceTotal.reduce(reducer,0);
-    console.log (prixTotal)
 
     // Affichage du prix 
     let displayPrice = document.querySelector('.prix-total');
@@ -155,10 +150,10 @@ function priceTotalBasket () {
 // Formulaire 
 class infoForm {
     constructor () {
-        this.lastname = document.querySelector ("#lastname").value;
-        this.firstname = document.querySelector ("#firstname").value;
+        this.lastName = document.querySelector ("#lastname").value;
+        this.firstName = document.querySelector ("#firstname").value;
         this.email = document.querySelector ("#email").value;
-        this.adress = document.querySelector ("#adress").value;
+        this.address = document.querySelector ("#address").value;
         this.city = document.querySelector ("#city").value;
     }
 
@@ -210,10 +205,13 @@ document.getElementById('submit').addEventListener('click', (e) => {
         }
     }
     if (valid) {
+        sendRequest ();
         // Mettre les formInfo dans le localStorage
         alert ("votre commande à bien été envoyé");
-        localStorage.setItem ("form", JSON.stringify(formInfo));
+        /* localStorage.setItem ("form", JSON.stringify(formInfo)); */
+        
     }
+    /* sendRequest (); */
 });
 
 //~~~~~~~~~~~~~~~~~~~~ END - Formullaire ~~~~~~~~~~~~~~~~~~~~//
@@ -273,17 +271,84 @@ class orderInfo {
     }
 }  */
 
+/* function sendRequest () {
+
+    const lastname = document.querySelector ("#lastname").value;
+    const firstname = document.querySelector ("#firstname").value;
+    const email = document.querySelector ("#email").value;
+    const adress = document.querySelector ("#adress").value;
+    const city = document.querySelector ("#city").value;
+
+    const formInfo = new infoForm (lastname, firstname, email, adress, city);
+    const localStorageProduct = JSON.parse (localStorage.getItem("basket"));
+
+    let idOrder = [];
 
 
-/* postApiRequest (url + '/' + order, variable) // Variable doit représenter les informations du formulaire ainsi que le numéro de commande
-    .then (function (response) {
-        localStorage.setItem ("localStorageProduct", JSON.stringify([]));
-        localStorage.setItem ("orderConfirmation", response.orderId); 
-        window.location.href = "confirm.html"; 
+    for (let i = 0; i < localStorageProduct.length; i = i + 1) {
+        localStorageProduct[i].idProduit;
+        idOrder.push(localStorageProduct[i].idProduit);
+    }
+    
+
+    console.log (localStorageProduct) 
+
+    postApiRequest (url + '/' + 'order', variable) // Variable doit représenter les informations du formulaire ainsi que les id
+        .then (function (response) {
+            localStorage.setItem ("localStorageProduct", JSON.stringify([]));
+            localStorage.setItem ("orderConfirmation", response.orderId); 
+            window.location.href = "confirm.html"; 
+        })
+        .catch (function (error) {
+            console.log (error);
+            if (error === 0) {
+                alert ("Nous rencontrons un probléme avec le serveur");
+            }
+        });
+}
+
+console.log (sendRequest ())
+
+console.log (idOrder) */
+
+
+function sendRequest () {
+
+    // Récupération des ID
+    const products = []; 
+    for (let i = 0; i < localStorageProduct.length; i = i + 1) {
+        localStorageProduct[i].idProduit;
+        products.push(localStorageProduct[i].idProduit);
+    }
+    console.log (products)
+
+    // Récupération données du formulaire
+    const contact = JSON.parse (localStorage.getItem("form"));
+    
+    console.log (contact)
+
+    // Envoi des données
+    fetch (url + '/' + 'order', {
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify({contact, products}),
+    })
+    .then ( async (response) => {
+        return await response.json ()
+    })
+    .then (function (data) {
+        console.log(data)
+        /* localStorage.setItem ("localStorageProduct", JSON.stringify([]));
+        localStorage.setItem ("orderConfirmation", response.orderId);  */
+        window.location.href = "../confirm/confirm.html";    
     })
     .catch (function (error) {
-        console.log (error);
         if (error === 0) {
             alert ("Nous rencontrons un probléme avec le serveur");
         }
-    }); */
+    });
+}
+
+/* console.log (sendRequest ()); */
