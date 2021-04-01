@@ -82,7 +82,7 @@ for (let i = 0; i < btnRemoveArticle.length; i++) {
         // Selection ID
         let idRemoveProduct = localStorageProduct[i].idProduit;
 
-        // Suppression de l'élément cjiqué
+        // Suppression de l'élément cliqué
         localStorageProduct = localStorageProduct.filter (element => element.idProduit !== idRemoveProduct)
 
         // Mise a jour localStorage
@@ -340,9 +340,9 @@ function sendRequest () {
     })
     .then (function (data) {
         console.log(data)
+        window.location.href = "../confirm/confirm.html?orderId=" + data.orderId ;    
         /* localStorage.setItem ("localStorageProduct", JSON.stringify([]));
-        localStorage.setItem ("orderConfirmation", response.orderId);  */
-        window.location.href = "../confirm/confirm.html";    
+        localStorage.setItem ("orderConfirmation", response.orderId); */ 
     })
     .catch (function (error) {
         if (error === 0) {
