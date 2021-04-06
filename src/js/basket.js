@@ -7,7 +7,8 @@
 
 
 
-/************************************** START - Basket management ************************************/
+
+ /************************************** START - Basket management ************************************/
 
 // Convert basket localStorage data in javascript
 let localStorageProduct = JSON.parse (localStorage.getItem("basket"));  // Convertir les données JSON du localStorage en JS 
@@ -39,7 +40,6 @@ function clearTheBasket () {
 // Article delete button
 function basketDeleteItemButton () {
     let btnRemoveArticle = document.querySelectorAll('.btn-remove-article');
-    console.log (btnRemoveArticle)
 
         for (let i = 0; i < btnRemoveArticle.length; i++) {
         btnRemoveArticle[i].addEventListener('click', (e) => {
@@ -93,28 +93,33 @@ function priceTotalBasket () {
     localStorage.setItem ('totalPrice', JSON.stringify(totalPrice));
 }
 
-
-
-clearTheBasket ()
-priceTotalBasket ()
-
 /************************************** END - Basket management ************************************/
 
 
 
 
-/************************************** START - Display basket products ************************************/
+/********************************** START - Display basket products ********************************/
 
-//~~~~~~~~~~~~~~~~~~~~ Affichage des produits dans le paniers 
+// Const to display the product 
 const tableElt = document.getElementById('table');
 
-// Le tableau est-il vide ? 
+// Table is it empty ? 
 if (localStorageProduct === null || localStorageProduct == 0) { 
     yourBasketIsEmpty();
+
+    // Don't show the form
+    document.getElementById ('form').style.display = "none"
+
+    // Don't show the clear basket button
+    document.querySelector(".clearTheBasket").style.display = "none"
 }
 
-else {  // S'il n'est pas vide -> afficher produit
+else {  // If not => display products
     
+    // Show the clear button and the total price
+    clearTheBasket ()
+    priceTotalBasket () 
+
     let structurePanierProduct = [];
 
 
@@ -142,14 +147,16 @@ else {  // S'il n'est pas vide -> afficher produit
         ;
     }
 
-    if (i == localStorageProduct.length) {  // Basket inner HTML 
+    if (i == localStorageProduct.length) {  
         tableElt.innerHTML = structurePanierProduct;
     }
 };
 
 // Funcion declaration
 basketDeleteItemButton ()
+
 /************************************** END - Display basket products ************************************/
+
 
 
 
