@@ -1,7 +1,16 @@
+/** 
+
+ * Request class.js page
+ * API url
+
+**/
+
+
 
 const url = 'http://localhost:3000/api/cameras'
 
-/////////////// Recevoir les données de l'API //////////////////
+/////////////// Receive data from API //////////////////
+
 function getApiData() { 
   fetch(url)  //si réponse, exécution fontion then avec response comme paramétre
       .then(function (response) {  //exécution de la fonction json pour obtenir les données
@@ -9,7 +18,8 @@ function getApiData() {
       }) 
       .then(function (data) {  
       })
-      .catch(function (err) {
+      .catch(function (error) {
+          alert ('Nous rencontrons un probléme avec le serveur');
           console.log('Nous rencontrons un probléme avec le serveur');
       })
 };

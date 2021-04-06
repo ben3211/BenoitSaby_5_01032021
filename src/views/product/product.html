@@ -8,6 +8,7 @@
     <!-- link -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link rel="icon" href="../../../public/img/logo_orinoco.png" type="image/png" sizes="32x32">
 
     <title>Orinoco - détails produit</title>
 </head>
@@ -20,7 +21,6 @@
                 <a href="/index.html" class="w3-bar-item w3-button">
                 <img src="/public/img/logo_orinoco.png" alt="Logo Oricono">
             </a>
-                <a href="/src/views/product/product.html" class="items w3-bar-item w3-button w3-right w3-large">produit</a>
                 <a href="/src/views/basket/basket.html" class="items w3-bar-item w3-button w3-right w3-large">Panier</a>
             </div>
         </nav>
@@ -44,9 +44,17 @@
                     <hr>
                     <select id="select-option" class="w3-select w3-border" name="option">
                         <option value="" disabled selected>Choisissez votre objectif</option>
-                        <!-- <option class="option" value = ""></option>
-                        <option class="option" value = ""></option> -->
                     </select>
+                    <hr>
+                    <select id="select-quantity" class="w3-select w3-border" name="quantity">
+                        <option value="" disabled selected>Quantité</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
                     <hr>
                     <p id='price'>price</p><br>
                   </div>
@@ -55,13 +63,6 @@
               </div>
         </section>
 
-        <!-- <section class="w3-display-middle">
-            <div class="w3-container w3-center">
-                <h1>Détails produit</h1><br>
-              
-                <div id="product-card" class="w3-card-4" style="width:100%"></div>
-            </div>
-        </section> -->
     </main>
 
     <!-- footer -->
@@ -75,10 +76,9 @@
 
     <!-- script -->
     <script src="../../js/request.js"></script>    
-    <script src="../../js/Item.js"></script> 
-    <script src="../../js/itemLenses.js"></script> 
-    <script src="../../js/itemAddButtton.js"></script> 
-    <script src="../../js/main.js"></script>    
-    <script src="/src/views/product/product.js"></script>    
+    <script src="../../js/class/ItemClass.js"></script>
+    <script src="../../js/functions.js"></script>    
+    <script src="../../js/product.js"></script>    
+
 </body>
 </html>

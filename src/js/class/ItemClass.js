@@ -1,4 +1,9 @@
-/** Item.js **/
+/** 
+
+ * item.js page
+ * Class creation
+
+**/
 
 class Item 
 {
@@ -19,8 +24,5 @@ class Item
     	document.getElementById('description').innerHTML = this.description;
     	document.getElementById('price').innerHTML = this.price / 100 + ' €';
     }   
-
-	
-
 }
 
