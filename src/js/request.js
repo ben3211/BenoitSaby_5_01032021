@@ -9,38 +9,48 @@
 
 const url = 'http://localhost:3000/api/cameras'
 
-/////////////// Receive data from API //////////////////
+/*********************************** Get API data  *********************************/
 
-function getApiData() { 
-  fetch(url)  //si réponse, exécution fontion then avec response comme paramétre
-      .then(function (response) {  //exécution de la fonction json pour obtenir les données
-          return response.json();  //retourne une promesse en json
-      }) 
-      .then(function (data) {  
+function getCameras () {
+  return fetch (url)
+      .then (function(response) {
+          return response.json ()
       })
-      .catch(function (error) {
+      .then (function (cameras) {
+          /* console.log (cameras) */
+          return cameras
+      })
+      .catch (function (error) {
           alert ('Nous rencontrons un probléme avec le serveur');
           console.log('Nous rencontrons un probléme avec le serveur');
       })
-};
+}
 
 
 
+/*********************************** send API data  *********************************/
 
-/////////////// Envoyer les données à l'API //////////////////
-/* function postApiRequest (url, jsonBody) {
-  const promise = new Promise (function (resolve, reject) {
-    const request = new XMLHttpRequest();
-    request.open ("POST", url);
-    request.setRequestHeader("content-Type", "application/json");
-      if (this.readyState === 4) {
-        if (this.status === 201) {
-          resolve (JSON.parse(this.responseText));
-        } else {
-          reject (request.status);
+/* function sendData () {
+  return fetch (url + '/' + 'order', {
+    method : 'POST',
+    headers : {
+        'Content-Type' : 'application/json',
+    },
+    body : JSON.stringify({contact, products}),
+    })
+    .then ( async (response) => {
+        return await response.json ()
+    })
+    .then (function (data) {
+        console.log(data)
+        //window.location.href = "../confirm/confirm.html?orderId=" + data.orderId ;    
+        // localStorage.setItem ("localStorageProduct", JSON.stringify([]));
+        // localStorage.setItem ("orderConfirmation", response.orderId); 
+    })
+    .catch (function (error) {
+        if (error === 0) {
+            alert ("Nous rencontrons un probléme avec le serveur");
+            console.log ('Nous rencontrons un probléme avec le serveur');
         }
-      };
-      request.send (JSON.stringify(jsonBody));
-  });
-  return promise;
+    });
 } */

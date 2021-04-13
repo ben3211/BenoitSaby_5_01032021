@@ -17,12 +17,13 @@ class Item
     	this.price = price;
     }
 
-    display () 
+    displayItem () 
     {
     	document.getElementById('title').innerHTML = this.name;
     	document.getElementById('image').src = this.image;
     	document.getElementById('description').innerHTML = this.description;
     	document.getElementById('price').innerHTML = this.price / 100 + ' €';
     }   
+
 }
 

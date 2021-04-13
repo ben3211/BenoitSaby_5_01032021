@@ -42,7 +42,7 @@ function displayComfirmPage () {
 
 
     // Attribute
-    id.setAttribute ('class', 'w3-text-aqua');  
+    id.setAttribute ('class', 'w3-text-lime');  
     thanks.setAttribute ('class', 'w3-margin w3-padding');  
 
     // Inner.html 
@@ -50,7 +50,7 @@ function displayComfirmPage () {
     price.innerHTML = 'Le prix total est de : ' + totalPriceComfirmationPage + ' €'
     confirmation.innerHTML = 'Votre commande porte le numéro suivant :';
     id.innerHTML = orderId;
-    thanks.innerHTML = 'Merci de votre viste !';
+    thanks.innerHTML = 'Merci pour votre confiance !';
 
     // Order
     confirmTemplate.append(titre, price, confirmation, id, thanks);

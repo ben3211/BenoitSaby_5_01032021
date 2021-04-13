@@ -15,10 +15,9 @@ function getId () {
     return product;
 }
 const id = getId ();
+console.log (id)
 
-
-
-/********************************** Rercieve API data from ID ********************************/
+/********************************** Get API data from ID ********************************/
 
 fetch (url + '/' + id ) 
 
@@ -49,7 +48,7 @@ function displayItemsProductPage (data) {
     console.log (cameras.id)
 
     // Display function from ItemsClass folder
-    cameras.display ();
+    cameras.displayItem ();
 
     // Options selection from API
     let choiceOption = data.lenses;
@@ -67,8 +66,9 @@ function displayItemsProductPage (data) {
     const lensesOption = document.getElementById('select-option');
 
     // Add to basket function
-    AddToBasketButton (lensesOption, data)
-}
+    AddToBasketButton (lensesOption, data);
+};
+
 
 
 
@@ -90,9 +90,11 @@ console.log(initBasket());
 
 // Add profuct information to the basket
 function addToBasket (productInformation) {
-    var basket = initBasket ();                                 // Get the basket 
-    basket.push (productInformation);                           // Add product
+    let basket = initBasket ();                                 // Get the basket 
 
+    basket.push (productInformation);                           // Add product
+    
+    
     saveBasket (basket);                                        // Save
     popUp ();                                                   
 };
@@ -105,7 +107,7 @@ function saveBasket (basket) {
 
 // Pop window inform about add product 
 function popUp () {
-    alert ("Votre produit a bien été ajouté au panier");
+    alert ("Votre appareil a bien été ajouté au panier");
 };
 
 
@@ -114,10 +116,11 @@ function AddToBasketButton (lensesOption, data) {
     const btn = document.getElementById("button-add-basket");
 
     btn.addEventListener("click", (e) => {
-        // Lense option value  
+        // Lenses option value  
         const choiceOption = lensesOption.value;
         // Quantity option value  
-        const choiceQuantity = document.querySelector ('#select-quantity').value;
+        const choiceQuantity = document.querySelector ('#select-quantity').value; 
+
         // Information object 
         let productInformation = {
             nomProduit: data.name,
@@ -132,6 +135,5 @@ function AddToBasketButton (lensesOption, data) {
         // add to basket function 
         addToBasket (productInformation);
     });
-}
-
+};
 

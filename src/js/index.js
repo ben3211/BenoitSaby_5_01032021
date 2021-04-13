@@ -7,23 +7,17 @@
 
 
 
-/*********************************** Rercieve API data  *********************************/
-
-fetch (url)
-    .then (function (response) {  
-        return response.json(); 
-    }) 
-    .then (function (data) { 
-
-        // Display function
-        displayItemsIndexPage (data);
-    })
-    .catch (function (error) {
-        alert ('Nous rencontrons un probléme avec le serveur');
-        console.log('Nous rencontrons un probléme avec le serveur'); 
-    });
+main ();
 
 
+
+/*********************************** Get API data  *********************************/
+
+async function main () {
+    const cameras = await getCameras ()
+    console.log (cameras)
+    displayItemsIndexPage (cameras);
+}
 
 
 
@@ -51,12 +45,12 @@ function displayItemsIndexPage (data) {
         linkElement.setAttribute('href','src/views/product/product.html?id=' + data[i]._id); 
 
         // Class creation
-        cardContainer.setAttribute ('class', 'w3-third'); 
+        cardContainer.setAttribute ('class', 'w3-third w3-hover-opacity'); 
 
         cardElement.setAttribute ('class', 'w3-card-4 w3-center w3-padding w3-margin w3-light-gray');  
     
         price.className = 'price';
-        price.setAttribute ('class', 'w3-text-indigo'); 
+        price.setAttribute ('class', 'w3-text-sand w3-button w3-round w3-green'); 
 
         // Inner.html 
         _id = data[i]._id;

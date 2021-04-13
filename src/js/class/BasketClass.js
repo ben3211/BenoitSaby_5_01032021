@@ -27,19 +27,4 @@ class infoForm {
         this.address = document.querySelector ("#address").value;
         this.city = document.querySelector ("#city").value;
     }
-
-    /* regExEmail = (value) => {
-        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test (value);
-    }
-
-    emailControl () {
-        let email = this.email;
-        if(regExEmail(email)) {
-            return true;
-        }
-        else {
-            alert ("email non valide")
-            return false;
-        }
-    } */
 };
