@@ -34,7 +34,6 @@ function displayComfirmPage () {
     const confirmTemplate = document.getElementById('confirmTemplate');
 
     // items creation        
-    let titre = document.createElement('h2');
     let price = document.createElement('span')
     let confirmation = document.createElement('p');
     let thanks = document.createElement('p');
@@ -46,14 +45,13 @@ function displayComfirmPage () {
     thanks.setAttribute ('class', 'w3-margin w3-padding');  
 
     // Inner.html 
-    titre.innerHTML = 'Confirmation de votre commande';
-    price.innerHTML = 'Le prix total est de : ' + totalPriceComfirmationPage + ' €'
+    price.innerHTML = 'Le prix total est de : ' + totalPriceComfirmationPage + ' €';
     confirmation.innerHTML = 'Votre commande porte le numéro suivant :';
     id.innerHTML = orderId;
     thanks.innerHTML = 'Merci pour votre confiance !';
 
     // Order
-    confirmTemplate.append(titre, price, confirmation, id, thanks);
+    confirmTemplate.append( price, confirmation, id, thanks);
 }
 
 

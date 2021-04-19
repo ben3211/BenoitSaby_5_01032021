@@ -52,23 +52,24 @@
             <p id="error" class="w3-center w3-text-red"></p>
             <h2 class="w3-text-blue">Formulaire</h2>
             <p>      
-            <label class="w3-text-black fa fa-user" for="Votre Nom"><b> Nom</b></label> 
+            <label class="w3-text-black fa fa-user" for="lastname"><b> Nom</b></label> 
             <input class="w3-input w3-border" name="lastname" id="lastname" placeholder="Nom" type="text" required pattern="[a-zA-Z]"></p>
             <p>      
-            <label class="w3-text-black fa fa-user" for="Votre Prénom"><b> Prénom</b></label>
-            <input class="w3-input w3-border" name="firstname" id="firstname" placeholder="Prénom" type="text" required></p>
+            <label class="w3-text-black fa fa-user" for="firstname"><b> Prénom</b></label>
+            <input class="w3-input w3-border" name="firstname" id="firstname" placeholder="Prénom" type="text" required pattern="[a-zA-Z]"></p>
             <p>      
             <label class="w3-text-black fa fa-envelope" for="email"><b> Adress mail</b></label> 
             <input class="w3-input w3-border" name="email" id="email" placeholder="Mail@example.com" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></p>
             <p>      
-            <label class="w3-text-black fa fa-address-card-o" for="adress"><b> Adresse</b></label> 
+            <label class="w3-text-black fa fa-address-card-o" for="address"><b> Adresse</b></label> 
             <input class="w3-input w3-border" name="address" id="address" placeholder="Adresse" type="text" required></p>
             <p>      
             <label class="w3-text-black fa fa-institution" for="city"><b> Ville</b></label> 
             <input class="w3-input w3-border" name="city" id="city" placeholder="Ville" type="text" required></p>
-            <p>      
+                 
             <div class="w3-center">
             <input type="submit" name="submit" id="submit" value="Passez votre commande" class="w3-btn w3-light-blue w3-padding w3-margin w3-round-large">
+            </div>
           </form>
 
       </section>
@@ -90,10 +91,10 @@
   </footer>
 
     <!-- script -->
-    <script type="text/javascript" src="../../js/request.js"></script>   
-    <script type="text/javascript" src="../../js/class/BasketClass.js"></script>
-    <script type="text/javascript" src="../../js/functions.js"></script> 
-    <script type="text/javascript" src="../../js/basket.js"></script> 
+    <script src="../../js/request.js"></script>   
+    <script src="../../js/class/BasketClass.js"></script>
+    <script src="../../js/functions.js"></script> 
+    <script src="../../js/basket.js"></script> 
 
 
 </body>
