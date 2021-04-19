@@ -14,6 +14,7 @@
 let localStorageProduct = JSON.parse (localStorage.getItem("basket"));  // Convertir les données JSON du localStorage en JS 
 console.log (localStorageProduct)
 
+
 // If the basket iempty ? 
 function yourBasketIsEmpty() {
     const empty = document.getElementById('empty-basket');
@@ -39,32 +40,42 @@ function clearTheBasket () {
 
 // Article delete button
 function basketDeleteItemButton () {
-    let btnRemoveArticle = document.querySelectorAll('.btn-remove-article');
+    let btn = document.querySelectorAll ('.btn-remove-article');
+    console.log (btn)
 
-        for (let i = 0; i < btnRemoveArticle.length; i++) {
-        btnRemoveArticle[i].addEventListener('click', (e) => {
+    for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', (e) => {
+            const id = e.target.getAttribute('data-id')
+            console.log (id)
+            localStorageProduct.splice (i, 1);
+
+            /* for (let i = 0; i != localStorageProduct.length; i++) {
+                if (localStorageProduct[i].id === id ) {
+                    localStorageProduct.splice (i, 1);
+                    console.log (localStorageProduct);
+                    break;
+                }
+            } */
+            // Mise a jour localStorage
+            localStorage.setItem ('basket', JSON.stringify(localStorageProduct));
+
+            // Alerte produit suprimer 
+            alert ("prosuit suprimer du panier")
+            window.location.reload(true);
+        });
+    };
+
+
+        /* for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', (e) => {
 
             // Selection ID
-            let idRemoveProduct = localStorageProduct[i].idProduit;
-            console.log (idRemoveProduct)
+            let btn = localStorageProduct[i].idProduit;
+            console.log (btn)
 
             // Suppression de l'élément cliqué
-            function removeIfSameId (idRemoveProduct) {
-                
-                    if (localStorageProduct[i].idRemoveProduct === idRemoveProduct) {
-                        localStorageProduct.splice (i, 1);
-                        return;
-                    }
-                    console.log(i)
-                    console.log(localStorageProduct)
-                }
-            
-            
-            removeIfSameId (idRemoveProduct);
-
-
-            /* localStorageProduct = localStorageProduct.filter (element => element.idProduit !== idRemoveProduct)
-            console.log (localStorageProduct) */
+            localStorageProduct = localStorageProduct.filter (element => element.idProduit !== btn)
+            console.log (localStorageProduct)
 
             // Mise a jour localStorage
             localStorage.setItem ('basket', JSON.stringify(localStorageProduct));
@@ -73,7 +84,7 @@ function basketDeleteItemButton () {
             alert ("prosuit suprimer du panier")
             window.location.reload(true);
         })
-    }
+    } */
 }
 
 // Total price function
@@ -152,7 +163,7 @@ else {  // If not => display products
                                                 <p class="w3-margin-top">Quantité : ${localStorageProduct[i].quantity}</p>
                                             </div>
                                             <div class="w3-col m3">
-                                                <button class="btn-remove-article w3-round-xxlarge w3-button w3-deep-orange w3-margin-top">Suprimer</button>
+                                                <button class="btn-remove-article w3-round-xxlarge w3-button w3-deep-orange w3-margin-top" data-id = ${localStorageProduct[i].idProduit}>Suprimer</button>
                                             </div>
                                         </div> 
                                     <hr>`
@@ -164,8 +175,8 @@ else {  // If not => display products
     }
 };
 
-// Funcion button delete declaration
-basketDeleteItemButton ()
+// Function button delete declaration
+basketDeleteItemButton ();
 
 /************************************** END - Display basket products ************************************/
 

@@ -76,8 +76,8 @@ function displayItemsProductPage (data) {
 
 // Basket initialisation 
 function initBasket () {
-    var basket = localStorage.getItem ('basket');
-    if(basket != null) {                                        // If is not empty 
+    let basket = localStorage.getItem ('basket');
+    if(basket != null) {                                        
         return JSON.parse(basket);
     }
     else {
@@ -90,12 +90,15 @@ console.log(initBasket());
 
 // Add profuct information to the basket
 function addToBasket (productInformation) {
-    let basket = initBasket ();                                 // Get the basket 
 
-    basket.push (productInformation);                           // Add product
+    // Get the basket 
+    let basket = initBasket ();                                 
+
+    // Add product to basket
+    basket.push (productInformation);                           
     
-    
-    saveBasket (basket);                                        // Save
+    // Save product
+    saveBasket (basket);                                        
     popUp ();                                                   
 };
 
@@ -118,6 +121,7 @@ function AddToBasketButton (lensesOption, data) {
     btn.addEventListener("click", (e) => {
         // Lenses option value  
         const choiceOption = lensesOption.value;
+        
         // Quantity option value  
         const choiceQuantity = document.querySelector ('#select-quantity').value; 
 
@@ -136,4 +140,5 @@ function AddToBasketButton (lensesOption, data) {
         addToBasket (productInformation);
     });
 };
+
 
