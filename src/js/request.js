@@ -17,7 +17,7 @@ function getCameras () {
           return response.json ()
       })
       .then (function (cameras) {
-          /* console.log (cameras) */
+          // console.log (cameras) 
           return cameras
       })
       .catch (function (error) {

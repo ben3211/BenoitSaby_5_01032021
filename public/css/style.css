@@ -28,14 +28,18 @@ nav {
     margin-bottom: 20px;
 }
 
-nav img {
+nav img.orinoco-logo {
     width: 120px;
     height: 100%;
     margin: auto;
 }
 
-nav .items {
-    margin:  12px;
+nav img.orinoco-basket {
+    height: 50px;
+    width: 60px;
+}
+nav img.orinoco-basket:hover {
+    color: none;
 }
 
 img {

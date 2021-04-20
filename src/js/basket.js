@@ -10,8 +10,8 @@
 
  /************************************** START - Basket management ************************************/
 
-// Convert basket localStorage data in javascript
-let localStorageProduct = JSON.parse (localStorage.getItem("basket"));  // Convertir les données JSON du localStorage en JS 
+// Convert localStorage data in javascript understandable language 
+let localStorageProduct = JSON.parse (localStorage.getItem("basket"));  
 console.log (localStorageProduct)
 
 
@@ -49,13 +49,6 @@ function basketDeleteItemButton () {
             console.log (id)
             localStorageProduct.splice (i, 1);
 
-            /* for (let i = 0; i != localStorageProduct.length; i++) {
-                if (localStorageProduct[i].id === id ) {
-                    localStorageProduct.splice (i, 1);
-                    console.log (localStorageProduct);
-                    break;
-                }
-            } */
             // Mise a jour localStorage
             localStorage.setItem ('basket', JSON.stringify(localStorageProduct));
 
@@ -64,27 +57,6 @@ function basketDeleteItemButton () {
             window.location.reload(true);
         });
     };
-
-
-        /* for (let i = 0; i < btn.length; i++) {
-            btn[i].addEventListener('click', (e) => {
-
-            // Selection ID
-            let btn = localStorageProduct[i].idProduit;
-            console.log (btn)
-
-            // Suppression de l'élément cliqué
-            localStorageProduct = localStorageProduct.filter (element => element.idProduit !== btn)
-            console.log (localStorageProduct)
-
-            // Mise a jour localStorage
-            localStorage.setItem ('basket', JSON.stringify(localStorageProduct));
-
-            // Alerte produit suprimer 
-            alert ("prosuit suprimer du panier")
-            window.location.reload(true);
-        })
-    } */
 }
 
 // Total price function
@@ -143,13 +115,13 @@ else {  // If not => display products
     clearTheBasket ()
     priceTotalBasket () 
 
-    let structurePanierProduct = [];
+    let structureBasketProduct = [];
 
 
     for ( i = 0; i < localStorageProduct.length; i++ ) {
         /* console.log (localStorageProduct.length) */
 
-        structurePanierProduct += ` <hr>
+        structureBasketProduct += ` <hr>
                                         <div class="w3-row w3-center">
                                             <div class="w3-col m3">
                                                 <img src = ${localStorageProduct[i].image} style="width:90px;" class="w3-margin w3-round-large">
@@ -171,7 +143,7 @@ else {  // If not => display products
     }
 
     if (i == localStorageProduct.length) {  
-        tableElt.innerHTML = structurePanierProduct;
+        tableElt.innerHTML = structureBasketProduct;
     }
 };
 
@@ -187,7 +159,6 @@ basketDeleteItemButton ();
 
 // 'click' listener and API validation
 document.getElementById('submit').addEventListener('click', (e) => {
-    /* e.preventDefault(); */
 
     let formInfo = new infoForm
 
@@ -204,15 +175,15 @@ document.getElementById('submit').addEventListener('click', (e) => {
         localStorage.setItem ("form", JSON.stringify(formInfo));                                 
         sendRequest ();
         alert ("votre commande à bien été envoyé");
-        
+        window.localStorage.removeItem('basket');
     }
 });
 
-/****************************************** END - Form managemnt ***************************************/
+/****************************************** END - Form managemnt *****************************************/
 
 
 
-/****************************************** START - POST request ***************************************/
+/****************************************** START *- POST request ****************************************/
 
 function getDataPostRequest () {
     // Get the product ID 
@@ -233,7 +204,7 @@ function getDataPostRequest () {
 
 function sendRequest () {
 
-    // Récupération des ID
+    // Get the ID
     const products = []; 
     for (let i = 0; i < localStorageProduct.length; i = i + 1) {
         localStorageProduct[i].idProduit;
@@ -241,11 +212,11 @@ function sendRequest () {
     }
     console.log (products)
 
-    // Récupération données du formulaire
+    // Get datas from form
     const contact = JSON.parse (localStorage.getItem("form"));
     console.log (contact)
 
-    // Envoi des données
+    // Send datas
     fetch (url + '/' + 'order', {
         method : 'POST',
         headers : {
@@ -259,8 +230,6 @@ function sendRequest () {
     .then (function (data) {
         console.log(data)
         window.location.href = "../confirm/confirm.html?orderId=" + data.orderId;    
-        // localStorage.setItem ("localStorageProduct", JSON.stringify([]));
-        // localStorage.setItem ("orderConfirmation", response.orderId);  
     })
     .catch (function (error) {
         if (error === 0) {

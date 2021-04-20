@@ -20,10 +20,12 @@
     <header>
         <nav>
             <div class="w3-bar w3-indigo">
-                <a href="index.html" class="w3-bar-item w3-button">
-                    <img src="public/img/logo_orinoco.png" alt="Logo Oricono">
+                <a href="index.html" class="w3-bar-item w3-button w3-hover-indigo w3-hover-opacity">
+                    <img class="orinoco-logo" src="public/img/orinoco-alpha.png" alt="Logo Oricono">
                 </a>
-                <a href="src/views/basket/basket.html" class="items w3-bar-item w3-button w3-right w3-large w3-text-white">Panier</a>
+                <a href="src/views/basket/basket.html" class="w3-bar-item w3-button w3-margin-right w3-right w3-hover-indigo w3-hover-opacity">
+                    <img class="orinoco-basket" src="public/img/orinoco-basket.png" alt="logo panier">
+                </a>
             </div>
         </nav>
     </header>
@@ -31,23 +33,23 @@
     <!-- main -->
     <main>
 
-        <!-- hero -->
-        <div class="w3-content hero-text">
-            <div class="w3-display-container">
-                <div class="w3-center w3-small">
-                    <h1>Orinoco</h1>
+        <!-- banner -->
+        <banner>
+            <div class="w3-content">
+                <div class="w3-display-container">
+                    <div class="w3-center w3-small">
+                        <h1>Orinoco</h1>
+                    </div>
+                    <img src="public/img/banner.jpg" alt="Une main tient un objectif d'appareil photo" style="width:100%">
                 </div>
-                <img src="public/img/banner.jpg" alt="Une main tient un objectif d'appareil photo" style="width:100%">
             </div>
-        </div>
-
+        </banner>
 
         <!-- section -->
         <section>
             <h2 class="w3-center">Les appareils vintage que nous vous proposons</h2>
             <div id='index-card' class="addCard w3-row-padding"></div>
         </section>
-        
     </main>
 
     <!-- footer -->
