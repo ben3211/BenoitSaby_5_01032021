@@ -42,7 +42,7 @@ function displayItemsIndexPage (data) {
 
         // link properties  
         linkElement.className = 'link';
-        linkElement.setAttribute('href','src/views/product/product.html?id=' + data[i]._id); 
+        linkElement.setAttribute('href','src/views/product.html?id=' + data[i]._id); 
 
         // Class creation
         cardContainer.setAttribute ('class', 'w3-third w3-hover-opacity'); 

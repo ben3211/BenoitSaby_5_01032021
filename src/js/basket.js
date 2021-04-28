@@ -229,7 +229,7 @@ function sendRequest () {
     })
     .then (function (data) {
         console.log(data)
-        window.location.href = "../confirm/confirm.html?orderId=" + data.orderId;    
+        window.location.href = "../views/confirm.html?orderId=" + data.orderId;    
     })
     .catch (function (error) {
         if (error === 0) {
