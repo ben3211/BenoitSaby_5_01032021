@@ -1,6 +1,6 @@
 # Orinoco #
 
-![](img/orinoco-alpha.png)
+![](public/img/orinoco-alpha.png)
 
 ### Prerequisites ###
 
