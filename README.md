@@ -1,5 +1,7 @@
 # Orinoco #
 
+![](img/orinoco-alpha.png)
+
 ### Prerequisites ###
 
 You will need to have Node and `npm` installed locally on your machine.
